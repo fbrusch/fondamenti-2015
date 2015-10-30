@@ -1,0 +1,488 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "def range(a, b):\n",
+    "    i = a\n",
+    "    ret = []\n",
+    "    while i < b:\n",
+    "        ret = ret + [i]\n",
+    "        i = i + 1\n",
+    "    return ret"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "def divide(n, m):\n",
+    "    return m % n == 0"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "def divisori(x):\n",
+    "    d = []\n",
+    "    for n in range(1, x+1):\n",
+    "        if divide(n, x):\n",
+    "            d = d + [n]\n",
+    "    return d"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "def primo(n):\n",
+    "    for x in range(2, n):\n",
+    "        if n % x == 0:\n",
+    "            return False\n",
+    "    return True"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "def filtra_primi(numeri):\n",
+    "    d = []\n",
+    "    for n in numeri:\n",
+    "        if primo(n):\n",
+    "            d = d + [n]\n",
+    "    return d"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "def esponente(n, m):\n",
+    "    if m % n != 0:\n",
+    "        return 0\n",
+    "    return 1 + esponente(n, m//n)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "def fattorizza(n):\n",
+    "    fattori_primi = filtra_primi(divisori(n)[1:])\n",
+    "    res = []\n",
+    "    for fattore in fattori_primi:\n",
+    "        e = esponente(fattore, n)\n",
+    "        res = res + [(fattore, e)]\n",
+    "        \n",
+    "    return res"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 53,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[(3, 1), (5, 3), (3, 1), (5, 1), (7, 1)]"
+      ]
+     },
+     "execution_count": 53,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "fattorizza(375) + fattorizza(105)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1"
+      ]
+     },
+     "execution_count": 48,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "lista[0][1]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 56,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "def set_lista(lista):\n",
+    "    nuova_lista = []\n",
+    "    for elem in lista:\n",
+    "        if (elem not in nuova_lista):\n",
+    "            nuova_lista = nuova_lista + [elem]\n",
+    "    return nuova_lista"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 59,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[(3, 1), (5, 3), (5, 1), (7, 1)]"
+      ]
+     },
+     "execution_count": 59,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "set_lista([(3, 1), (5, 3), (3, 1), (5, 1), (7, 1)])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 61,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "def maggiore(a, b):\n",
+    "    return (a[0]==b[0]) and (a[1]>b[1])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 83,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "def considera(elem, lista):\n",
+    "    for e in lista:\n",
+    "        if maggiore(e, elem):\n",
+    "            return False\n",
+    "    return True"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 84,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "def mcm(x):\n",
+    "    ris = []\n",
+    "    lista = set_lista(x)\n",
+    "    for elem in lista:\n",
+    "        if(considera(elem, lista)):\n",
+    "            ris = ris + [elem]\n",
+    "    return ris"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 85,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[(2, 1), (5, 2), (151, 1), (2, 3), (5, 1), (157, 1)]"
+      ]
+     },
+     "execution_count": 85,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "fattorizza(7550) + fattorizza(6280)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 86,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[(5, 2), (151, 1), (2, 3), (157, 1)]"
+      ]
+     },
+     "execution_count": 86,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "mcm(fattorizza(7550) + fattorizza(6280))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 101,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "from random import randint"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 110,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "def gen():\n",
+    "    return [randint(-100,100) for x in range(0,10)]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 129,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "def min_matteo_carlo(lista):\n",
+    "    n_min = lista[0]\n",
+    "    l = len(lista)\n",
+    "    i = 0\n",
+    "    while(i<l):\n",
+    "        if lista[i]<n_min:\n",
+    "            n_min = lista[i]\n",
+    "        i=i+1\n",
+    "    return n_min"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 134,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "def min_stefano(lista):\n",
+    "    n_min = lista[0]\n",
+    "    for e in lista:\n",
+    "        if e<n_min:\n",
+    "            n_min = e\n",
+    "    return n_min"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 144,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "def min_miranda_alessandro(lista):\n",
+    "    if len(lista)==1:\n",
+    "        return lista[0]\n",
+    "    m = min_miranda_alessandro(lista[1:])\n",
+    "    if lista[0] < m:\n",
+    "        return lista[0]\n",
+    "    return m"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 145,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[39, -35, -21, 3, 83, -35, 43, 28, 80, 51]\n",
+      "-35\n"
+     ]
+    }
+   ],
+   "source": [
+    "lista=gen()\n",
+    "print(lista)\n",
+    "print(min_miranda_alessandro(lista))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 146,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "2"
+      ]
+     },
+     "execution_count": 146,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "1+1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 159,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "10000 loops, best of 3: 28.4 µs per loop\n"
+     ]
+    }
+   ],
+   "source": [
+    "timeit(min_matteo_carlo(gen()))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 160,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "10000 loops, best of 3: 24.1 µs per loop\n"
+     ]
+    }
+   ],
+   "source": [
+    "timeit(min_stefano(gen()))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 162,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "10000 loops, best of 3: 29.8 µs per loop\n"
+     ]
+    }
+   ],
+   "source": [
+    "timeit(min_miranda_alessandro(gen()))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.4.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 0
+}
