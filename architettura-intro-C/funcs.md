@@ -46,7 +46,7 @@ int square(int x) {
 }
 ~~~
 
-Anche qui tutt
+~~~{.C}
 int somma(int a, int b) {
     return a+b;
 }
@@ -86,3 +86,4 @@ int main() {
     printf("isprimo_rifat(10) -> %i\n", isprimo_rifat(10));
     printf("isprimo_rifat(17) -> %i\n", isprimo_rifat(17));
 }
+~~~
