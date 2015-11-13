@@ -46,6 +46,8 @@ int square(int x) {
 }
 ~~~
 
+[...]
+
 ~~~{.C}
 int somma(int a, int b) {
     return a+b;
