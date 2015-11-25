@@ -14,6 +14,8 @@ int i(int n)
 
 int main()
 {
-    print("%i\n", og(1));
-    print("%i\n", og(1234));
+    printf("%i\n", og(1));
+    printf("%i\n", og(1234));
+    printf("%i\n", i(1234));
+    printf("%i|n", i(321))
 }
