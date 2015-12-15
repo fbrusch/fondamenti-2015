@@ -20,7 +20,7 @@ sort](https://it.wikipedia.org/wiki/Bubble_sort)
 Il bubble sort si esegue reiterando un certo numero di volte un particolare
 "trattamento" dei dati del nostro array: Si confronta il primo elemento dell'array con il secondo. Se i due non sono
 in ordine, li si inverte. Poi si passa a confrontare il secondo con il terzo, e
-cosi via fino all'$n-1$ con l'$n$. Alla fine del trattamento, l'elemento più
+cosi via fino all'`n-1` con l`n`. Alla fine del trattamento, l'elemento più
 grande è sicuramente in fondo. Se si riapplica il procedimento, il secondo
 elemento più grande finirà di sicuro in penultima posizione, e così via.
 Reiterando $n$ volte si ha la sicurezza di avere ordinato tutti gli elementi.
@@ -142,7 +142,7 @@ Ok, allora scriviamo `ltstr`!
 Il ragionamento ricorsivo è semplice: confronto i primi caratteri di `a` e di
 `b`: se sono diversi, posso stabilire subito quale stringa viene prima
 alfabeticamente. Se sono diversi, tolgo il primo carattere e considero le
-stringhe `a` e `b`, tranne le prime lettere (`a+1`, `b+1`)[[.]]
+stringhe `a` e `b`, tranne le prime lettere (`a+1`, `b+1`).
 
 Ecco fatto! Ho ottenuto una funzione che ordina un array di stringhe!
 
